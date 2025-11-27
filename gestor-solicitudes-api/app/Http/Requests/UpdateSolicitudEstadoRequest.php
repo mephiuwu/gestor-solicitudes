@@ -11,7 +11,7 @@ class UpdateSolicitudEstadoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class UpdateSolicitudEstadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'estado' => 'required|in:pendiente,aprobado,rechazado',
         ];
     }
 }

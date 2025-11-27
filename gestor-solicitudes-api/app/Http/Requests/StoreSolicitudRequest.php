@@ -11,7 +11,7 @@ class StoreSolicitudRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreSolicitudRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre_documento' => 'required|string|max:255',
+            'estado' => 'in:pendiente,aprobado,rechazado',
         ];
     }
 }
