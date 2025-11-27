@@ -23,7 +23,9 @@ class SolicitudController extends Controller
             'fecha_creacion' => now(),
         ]);
 
-        return new SolicitudResource($solicitud);
+        return (new SolicitudResource($solicitud))
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function update(UpdateSolicitudEstadoRequest $request, $id) {
