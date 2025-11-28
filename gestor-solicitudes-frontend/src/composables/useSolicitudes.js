@@ -2,8 +2,8 @@ import { ref } from "vue";
 import axios from "axios";
 
 export function useSolicitudes() {
-    const solicitudes = ref([]);
     const API_URL = import.meta.env.VITE_API_URL;
+    const solicitudes = ref([]);
 
     const fetchSolicitudes = async () => {
         const res = await axios.get(`${API_URL}/solicitudes`);
