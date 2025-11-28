@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class SolicitudController extends Controller
 {
     public function index() {
-        $solicitudes = Solicitud::orderBy('id', 'desc')->get();
+        $solicitudes = Solicitud::orderBy('fecha_creacion', 'desc')->get();
 
         return SolicitudResource::collection($solicitudes);
     }
@@ -19,7 +19,7 @@ class SolicitudController extends Controller
     public function store(StoreSolicitudRequest $request) {
         $solicitud = Solicitud::create([
             'nombre_documento' => $request->nombre_documento,
-            'estado' => 'pendiente',
+            'estado' => $request->estado,
             'fecha_creacion' => now(),
         ]);
 

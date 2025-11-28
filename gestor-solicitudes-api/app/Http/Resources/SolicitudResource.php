@@ -18,7 +18,9 @@ class SolicitudResource extends JsonResource
             'id' => $this->id,
             'nombre_documento' => $this->nombre_documento,
             'estado' => $this->estado,
-            'fecha_creacion' => $this->fecha_creacion,
+            'fecha_creacion' => $this->fecha_creacion
+                ? \Carbon\Carbon::parse($this->fecha_creacion)->format('Y-m-d H:i:s')
+                : null,
         ];
     }
 }

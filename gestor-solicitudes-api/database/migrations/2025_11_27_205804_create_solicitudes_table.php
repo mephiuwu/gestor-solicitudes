@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_documento');
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente')->index();
-            $table->timestamp('fecha_creacion')->useCurrent();
+            $table->timestamp('fecha_creacion')->useCurrent()->index();
         });
     }
 
