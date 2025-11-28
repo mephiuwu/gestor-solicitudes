@@ -68,7 +68,7 @@
       </table>
     </div>
 
-    <ModalSolicitud :solicitud="modalData" @saved="guardar" @close="cerrarModal" />
+    <ModalSolicitud :solicitud="modalData" @saved="guardar" @close="cerrarModal" :error="error" />
   </div>
 </template>
 
@@ -77,7 +77,7 @@ import { ref, computed, onMounted } from "vue";
 import ModalSolicitud from "./ModalSolicitud.vue";
 import { useSolicitudes } from "../composables/useSolicitudes";
 
-const { solicitudes, fetchSolicitudes, crearSolicitud, actualizarEstado } = useSolicitudes();
+const { solicitudes, error, fetchSolicitudes, crearSolicitud, actualizarEstado } = useSolicitudes();
 
 const modalData = ref(null);
 
@@ -100,6 +100,7 @@ function abrirModal(solicitud = null) {
 }
 
 function cerrarModal() {
+  error.value = null;
   modalData.value = null;
 }
 
@@ -121,7 +122,7 @@ async function guardar(form) {
     }
     cerrarModal();
   } catch (e) {
-    console.error(e);
+    console.log(e);
   }
 }
 
