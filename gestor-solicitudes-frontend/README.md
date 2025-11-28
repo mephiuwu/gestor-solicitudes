@@ -1,44 +1,105 @@
-# gestor-solicitudes-frontend
+# 📋 Gestor de Solicitudes - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Sistema web moderno para la gestión y seguimiento de solicitudes de documentos, desarrollado con Vue 3 y Vite.
 
-## Recommended IDE Setup
+## ✨ Características
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Crear nuevas solicitudes de documentos
+- Editar el estado de solicitudes existentes
+- Filtrar solicitudes por estado y nombre
+- Visualización en tabla con estados codificados por color
+- Interfaz moderna y responsiva con Tailwind CSS
+- Experiencia de usuario fluida con transiciones suaves
 
-## Recommended Browser Setup
+## 🛠️ Tecnologías
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Vue 3** - Framework JavaScript progresivo
+- **Vite** - Herramienta de construcción rápida
+- **Tailwind CSS** - Framework CSS utility-first
+- **Axios** - Cliente HTTP para llamadas a la API
+- **Composition API** - API moderna de Vue para lógica reutilizable
 
-## Customize configuration
+## 📁 Estructura del Proyecto
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```
+src/
+├── components/
+│   ├── SolicitudesList.vue    # Lista principal con filtros
+│   └── ModalSolicitud.vue     # Modal para crear/editar
+├── composables/
+│   └── useSolicitudes.js      # Lógica compartida de solicitudes
+└── App.vue                    # Componente raíz
+```
 
-## Project Setup
+## 🚀 Configuración del Proyecto
 
-```sh
+### Pre-requisitos
+
+- Node.js (versión 16 o superior)
+- npm o yarn
+
+### Instalación
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/mephiuwu/gestor-solicitudes.git
+cd gestor-solicitudes-frontend
+```
+
+2. Instala las dependencias:
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Configura las variables de entorno:
 
-```sh
+Crea un archivo `.env` en la raíz del proyecto:
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+### Desarrollo
+
+Ejecuta el servidor de desarrollo:
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+La aplicación estará disponible en `http://localhost:5173`
 
-```sh
-npm run build
-```
+## 🎯 Uso
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Crear una Solicitud
 
-```sh
-npm run test:unit
-```
+1. Haz clic en el botón "Crear solicitud"
+2. Ingresa el nombre del documento
+3. Selecciona el estado inicial
+4. Haz clic en "Crear"
+
+### Editar una Solicitud
+
+1. Haz clic en "Editar" en la fila de la solicitud
+2. Modifica el estado según sea necesario
+3. Haz clic en "Actualizar"
+
+### Filtrar Solicitudes
+
+- **Por Estado**: Usa el selector desplegable para filtrar por pendiente, aprobado o rechazado
+- **Por Nombre**: Escribe en el campo de búsqueda para filtrar por nombre de documento
+- Usa el botón "Limpiar" para resetear todos los filtros
+
+## 🎨 Estados de Solicitudes
+
+| Estado | Color | Descripción |
+|--------|-------|-------------|
+| Pendiente | 🟡 Amarillo | Solicitud en espera de revisión |
+| Aprobado | 🟢 Verde | Solicitud aprobada |
+| Rechazado | 🔴 Rojo | Solicitud rechazada |
+
+## 📝 API Endpoints Utilizados
+
+El frontend consume los siguientes endpoints:
+
+- `GET /solicitudes` - Obtener todas las solicitudes
+- `POST /solicitudes` - Crear nueva solicitud
+- `PATCH /solicitudes/:id` - Actualizar estado de solicitud
