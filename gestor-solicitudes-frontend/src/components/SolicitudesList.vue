@@ -2,7 +2,7 @@
   <div>
     <h1>Gestión de Solicitudes</h1>
 
-    <button @click="abrirCrear">Crear solicitud</button>
+    <button @click="abrirModal()">Crear solicitud</button>
 
     <table border="1" cellpadding="6">
       <thead>
@@ -21,7 +21,7 @@
           <td>{{ solicitud.estado }}</td>
           <td>{{ solicitud.fecha_creacion }}</td>
           <td>
-            <button @click="abrirEditar(solicitud)">Editar</button>
+            <button @click="abrirModal(solicitud)">Editar</button>
           </td>
         </tr>
       </tbody>
@@ -29,7 +29,6 @@
 
     <!-- Modal -->
     <ModalSolicitud
-      :visible="modalVisible"
       :solicitud="modalData"
       @saved="guardar"
       @close="cerrarModal"
@@ -44,15 +43,10 @@ import { useSolicitudes } from "../composables/useSolicitudes";
 
 const { solicitudes, fetchSolicitudes, crearSolicitud, actualizarEstado } = useSolicitudes();
 
-const modalVisible = ref(false);
 const modalData = ref(null);
 
-function abrirCrear() {
-  modalData.value = {};
-}
-
-function abrirEditar(solicitud) {
-  modalData.value = { ...solicitud };
+function abrirModal(solicitud = null) {
+  modalData.value = solicitud ? { ...solicitud } : {};
 }
 
 function cerrarModal() {

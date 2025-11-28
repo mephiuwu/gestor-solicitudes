@@ -34,7 +34,6 @@
 import { computed, reactive, watch } from "vue";
 
 const props = defineProps({
-    visible: Boolean,
     solicitud: {
         type: Object,
         default: () => null
