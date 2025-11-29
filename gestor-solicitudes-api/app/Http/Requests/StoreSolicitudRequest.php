@@ -23,7 +23,7 @@ class StoreSolicitudRequest extends FormRequest
     {
         return [
             'nombre_documento' => 'required|string|max:255',
-            'estado' => 'in:pendiente,aprobado,rechazado',
+            'estado' => 'required|string|in:pendiente,aprobado,rechazado',
         ];
     }
 }
